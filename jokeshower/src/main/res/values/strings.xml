@@ -2,4 +2,5 @@
     <string name="app_name">JokeShower</string>
     <string name="joke_title">Saca só essa piada!</string>
     <string name="activityTitle">Hora da Risada</string>
+    <string name="back">Voltar</string>
 </resources>

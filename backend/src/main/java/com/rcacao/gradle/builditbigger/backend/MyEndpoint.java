@@ -5,6 +5,7 @@ import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 import com.rcacao.gradle.builditbigger.backend.MyBean;
 import javax.inject.Named;
+import com.rcacao.jokelib.Joker;
 
 /** An endpoint class we are exposing */
 @Api(
@@ -26,5 +27,15 @@ public class MyEndpoint {
 
         return response;
     }
+
+    @ApiMethod(name = "getJoke")
+    public MyBean getJoke() {
+        MyBean response = new com.rcacao.gradle.builditbigger.backend.MyBean();
+        Joker joker = new Joker();
+        response.setData(joker.getPiada());
+
+        return response;
+    }
+
 
 }

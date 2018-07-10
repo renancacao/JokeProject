@@ -2,23 +2,24 @@ package com.rcacao.gradle.builditbigger;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import com.rcacao.jokelib.Joker;
+
 import com.rcacao.jokeshower.JokeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Joker joker;
+    private static final int ID_LOADER = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        joker = new Joker();
     }
 
 
@@ -46,9 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void tellJoke(View view) {
 
-        Intent intent = new Intent(this, JokeActivity.class);
-        intent.putExtra(JokeActivity.ARG_JOKE, joker.getPiada());
-        startActivity(intent);
+        new EndPointAsyncTask(this).execute();
 
     }
 
